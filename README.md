@@ -8,20 +8,41 @@ Overview
 
 When we drive, we use our eyes to decide where to go.  The lines on the road that show us where the lanes are act as our constant reference for where to steer the vehicle.  Naturally, one of the first things we would like to do in developing a self-driving car is to automatically detect lane lines using an algorithm.
 
-In this project you will detect lane lines in images using Python and OpenCV.  OpenCV means "Open-Source Computer Vision", which is a package that has many useful tools for analyzing images.  
+This project  will detect lane lines in images using Python and OpenCV.  OpenCV means "Open-Source Computer Vision", which is a package that has many useful tools for analyzing images.  
 
 
-1. Describe the pipeline 
+Describe the pipeline 
 --
 
-To test the pipeline, series of test images were provided in test_image directory. Six test images have right solid white lines and Left yellow lines.  Code changes were made accordingly so the lane markings are identified accordings. As a initial test run these images were used to test the pipeline.
+To test the pipeline, series of test images were provided in test_image directory. Images have lane lines which have  solid white/yellow lines with series of alternating short lines.  The purpose of this project is identify both solid lines and dashed lines as lane lines.
+
+
+In our pipeline we perform below operations
+1. `Color Selection` :
+    We first run color selection on the input image to select only the yellow and white shades of color and mask all other colors. To do this, we convert the input image to HSV (hue, saturation, value) color space. This makes it easier to select required colors using OpenCV's inRange function.
+
+2. `GrayScale`: 
+    The images should be converted tp gray scale detect edges in a image. 
+
+3. `Image Blurring`: 
+    Blurring helps to soften the edges in the images as When there is an edge, the pixel intensity changes rapidly (i.e. from 0 to 255) and these are the edges which we want to detect. Its done using gaussian blurring.
+
+4. `Edge Detection`: Perfrom a Canny edge detection
+
+5. `Region of interest`: Select a fixed area as region of interest, masking out the top region like sky,trees. 
+
+6. `Lines Detection`: Perform a Hough transform to connect the edges detected by canny edge detection as lines.
+
+7. `Extrapolating Lines`:Using above mentioned tools, lanes are recognized but only partially. These recognized partial lanes needs to get extrapolated to full lane line length. This can be achieved by finding the slope and intercept of the lines. As we need to determine both the left lane line and right lane line. We will determine negative slope for left line and positive for right line.
+
+8. `Weighted Imgage`: Finally draw lines on the original image.
+
+
 
 Test Images
 --
 
-![png](Notes_Images/Initial_Images.png)
-
-
+![png](Notes_Images/Initial_Images.jpg)
 
 
 Creating a Great Writeup
