@@ -55,11 +55,12 @@ Final Images
 
 
 
-
-
 2. Identify any shortcomings
+This project had identified the lanes for the given images and videos. But, the limitation of this project is that it is limited to detecting only  staright left and right lanes. It fails to detetct  curved road. 
+
 
 3. Suggest possible improvements
+Project can be improved to detect the curvature of the curved roads. Possible solution can be using Regression model instead of averages to extrapolate the lines.
 
 
 
