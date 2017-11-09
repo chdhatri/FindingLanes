@@ -11,7 +11,7 @@ When we drive, we use our eyes to decide where to go.  The lines on the road tha
 This project  will detect lane lines in images using Python and OpenCV.  OpenCV means "Open-Source Computer Vision", which is a package that has many useful tools for analyzing images.  
 
 
-Describe the pipeline 
+1. Describe the pipeline 
 --
 
 To test the pipeline, series of test images were provided in test_image directory. Images have lane lines which have  solid white/yellow lines with series of alternating short lines.  The purpose of this project is identify both solid lines and dashed lines as lane lines.
@@ -56,11 +56,11 @@ Final Images
 
 
 2. Identify any shortcomings
-This project had identified the lanes for the given images and videos. But, the limitation of this project is that it is limited to detecting only  staright left and right lanes. It fails to detetct  curved road. 
+--
+This project had identified lane lines for the given images and videos. But, the limitation of this project is that it is limited to given images/videos. Project should be enhanced to accomidate all the generic conditions in identifying lane lines as it is failing to detect curvature path. 
 
 
 3. Suggest possible improvements
-Project can be improved to detect the curvature of the curved roads. Possible solution can be using Regression model instead of averages to extrapolate the lines.
-
-
+--
+Project can be improved to detect the curvature of the curved roads.
 
